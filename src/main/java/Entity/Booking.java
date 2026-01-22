@@ -13,6 +13,7 @@ public class Booking {
     private Boolean paymentStatus;
     
     //Nguyen Quan
+    public Boolean Approve;
     //Constructor with ... elements
     public Booking(int bookID, String userID, int managerID, Date C_in, Date C_out, double bookingPrice){
         this.bookingID = bookID;
@@ -22,10 +23,11 @@ public class Booking {
         this.checkOutDate = C_out;
         this.bookingPrice = bookingPrice;
         this.paymentStatus = false;
+        this.Approve = false;
     }
 
-    static void createBooking(){
-        
+    static void setApprove(Boolean Allow){
+        //this.Approve = Allow;
     }
     static void updateBookingDate(Date checkIn, Date checkOut){
         
