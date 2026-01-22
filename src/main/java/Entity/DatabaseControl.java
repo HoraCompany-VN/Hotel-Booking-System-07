@@ -1,17 +1,17 @@
-package group7;
+package Entity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 public class DatabaseControl {
-    public static void main(String[] args) {
-        
-    }
+    static Connection conn = null;
 
     static void ConnectMySQl(){
 
-        Connection conn = null;
         String url = "jdbc:mysql://localhost:3306/Hotel";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,10 +31,12 @@ public class DatabaseControl {
         }
     }
 
-    static void createTable(){
+    static void insertTable(){
         ConnectMySQl();
+        List<String> User = Arrays.asList("");
         try {
-            //Luc nay
+            //Luc nay can build lai qua trinh create table
+            PreparedStatement ps = conn.prepareStatement("");
         } catch (Exception e) {
         }
     }
