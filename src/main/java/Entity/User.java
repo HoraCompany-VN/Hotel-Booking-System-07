@@ -1,4 +1,4 @@
-package group7;
+package Entity;
 import java.util.List;
 
 public class User { //custormer has same meaning with usser

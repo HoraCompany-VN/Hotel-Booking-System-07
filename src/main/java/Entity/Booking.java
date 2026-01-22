@@ -1,4 +1,4 @@
-package group7;
+package Entity;
 
 import java.util.Date;
 
@@ -14,8 +14,14 @@ public class Booking {
     
     //Nguyen Quan
     //Constructor with ... elements
-    public Booking(int bookID){
+    public Booking(int bookID, String userID, int managerID, Date C_in, Date C_out, double bookingPrice){
         this.bookingID = bookID;
+        this.userID = userID;
+        this.managerID = managerID;
+        this.checkInDate = C_in;
+        this.checkOutDate = C_out;
+        this.bookingPrice = bookingPrice;
+        this.paymentStatus = false;
     }
 
     static void createBooking(){
@@ -26,7 +32,7 @@ public class Booking {
     }
     //Nguyen Quan
     static double TotalPrice(){
-        return 0.0;
+        return bookingPrice + 0.1 * bookingPrice;
     }
     //Nguyen Quan
     static void makePayment(){

@@ -1,4 +1,4 @@
-package group7;
+package Entity;
 
 public class Room {
     private int roomID;

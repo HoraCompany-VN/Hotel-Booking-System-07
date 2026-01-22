@@ -32,9 +32,9 @@ public class DatabaseControl {
     }
 
     static void createTable(){
+        ConnectMySQl();
         try {
-            ConnectMySQl();
-            //Chua hoan thanh thieu y tuong
+            //Luc nay
         } catch (Exception e) {
         }
     }

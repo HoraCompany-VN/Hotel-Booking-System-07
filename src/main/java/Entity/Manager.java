@@ -1,4 +1,4 @@
-package group7;
+package Entity;
 
 public class Manager {
     private String managerID;
