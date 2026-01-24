@@ -1,6 +1,6 @@
 package Entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Booking {
     private int bookingID;
@@ -11,13 +11,14 @@ public class Booking {
     private Date checkOutDate;
     private double bookingPrice;
     private Boolean paymentStatus;
-    
+    private Boolean Approve;
     //Nguyen Quan
-    public Boolean Approve;
     //Constructor with ... elements
-    public Booking(int bookID, String userID, int managerID, Date C_in, Date C_out, double bookingPrice){
-        this.bookingID = bookID;
+    public Booking(int bookingID, String userID, int roomID, int managerID, Date C_in, Date C_out, 
+                    double bookingPrice, boolean paymentStatus, boolean Approve){
+        this.bookingID = bookingID;
         this.userID = userID;
+        this.roomID = roomID;
         this.managerID = managerID;
         this.checkInDate = C_in;
         this.checkOutDate = C_out;

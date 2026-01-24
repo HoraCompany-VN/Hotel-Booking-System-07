@@ -10,8 +10,14 @@ public class Room {
 
     //Trinh
     //Constructor
-    public Room(){
-
+    public Room(int roomID, int hotelID, String userID,
+                boolean status, String facilities, String description) {
+        this.roomID = roomID;
+        this.hotelID = hotelID;
+        this.userID = userID;
+        this.status = status;
+        this.facilities = facilities;
+        this.description = description;
     }
 
     //Trinh

@@ -3,8 +3,9 @@ package Entity;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseControl {
@@ -31,13 +32,87 @@ public class DatabaseControl {
         }
     }
 
-    static void insertTable(){
+    static List<User> SelectUsers(String query, String Actor){
         ConnectMySQl();
-        List<String> User = Arrays.asList("");
+        List<User> users = new ArrayList<>();
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+
+        while(rs.next()){
+            users.add(new User(
+            rs.getString("userID"),
+            rs.getString("fullName"),
+            rs.getString("email"),
+            rs.getString("userPwd"),
+            rs.getString("phoneNumber")
+        ));
+        }
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+        }
+        return users;
+    }
+
+    static List<Room> SelectRoom(String query, String Actor){
+        ConnectMySQl();
+        List<Room> rooms = new ArrayList<>();
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+
+        while(rs.next()){
+            rooms.add(new Room(
+            rs.getInt("roomID"),
+            rs.getInt("hotelID"),
+            rs.getString("userID"),
+            rs.getBoolean("status"),
+            rs.getString("facilities"),
+            rs.getString("description")
+        ));
+        }
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+        }
+        return rooms;
+    }
+
+    static List<Booking> SelectBooking(String query, String Actor){
+        ConnectMySQl();
+        List<Booking> books = new ArrayList<>();
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+
+        while(rs.next()){
+            books.add(new Booking
+        (
+            rs.getInt("bookingID"),
+            rs.getString("userID"),
+            rs.getInt("roomID"),
+            rs.getInt("managerID"),
+            rs.getDate("checkInDate"),
+            rs.getDate("checkOutDate"),
+            rs.getDouble("bookingPrice"),
+            rs.getBoolean("paymentStatus"),
+            rs.getBoolean("Approve")       
+        ));
+        }
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+        }
+        return books;
+    }
+
+    static void insertTable(String command){
+        ConnectMySQl();
         try {
             //Luc nay can build lai qua trinh create table
-            PreparedStatement ps = conn.prepareStatement("");
+            PreparedStatement ps = conn.prepareStatement(command);
+            ps.execute();
+            System.err.println("Insert successfully");
         } catch (Exception e) {
+            System.err.println("Error: " + e);
         }
     }
 }

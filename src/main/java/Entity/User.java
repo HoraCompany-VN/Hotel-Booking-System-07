@@ -10,8 +10,14 @@ public class User { //custormer has same meaning with usser
 
     //Minh Hoa
     //Constructor with .... elements
-    public User(){ 
-        
+    public User(String userID, String fullName, String email,
+                String userPwd, String phoneNumber) 
+    {
+        this.userID = userID;
+        this.fullName = fullName;
+        this.email = email;
+        this.userPwd = userPwd;
+        this.phoneNumber = phoneNumber;
     }
 
     //Minh Hoa
