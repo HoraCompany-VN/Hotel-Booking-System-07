@@ -1,7 +1,9 @@
 package Entity;
+
+import java.sql.Date;
 import java.util.List;
 
-public class User { //custormer has same meaning with usser
+public class User {
     private String userID;
     private String fullName;
     private String email;
@@ -9,10 +11,9 @@ public class User { //custormer has same meaning with usser
     private String phoneNumber;
 
     //Minh Hoa
-    //Constructor with .... elements
+    //Constructor
     public User(String userID, String fullName, String email,
-                String userPwd, String phoneNumber) 
-    {
+                String userPwd, String phoneNumber) {
         this.userID = userID;
         this.fullName = fullName;
         this.email = email;
@@ -20,37 +21,92 @@ public class User { //custormer has same meaning with usser
         this.phoneNumber = phoneNumber;
     }
 
-    //Minh Hoa
-    static void updateProfile(){
+    //Minh Hoa - Getters
+    public String getUserID() { return userID; }
+    public String getFullName() { return fullName; }
+    public String getEmail() { return email; }
+    public String getUserPwd() { return userPwd; }
+    public String getPhoneNumber() { return phoneNumber; }
 
-    }
-
-    static List<Booking> viewBookings(){
-        /*
-        Khuc nay la viewBooking thi lam sao de thay dc nhung phong minh dat?
-        Ta can phai truy cap vao database
-        Ham connect da duoc xay dung hay tim cach select
-        Khi select duoc ket qua tao 1 bien List<Booking> truyen danh sach do vao bien nay
-        Luc nay ta return lai thoi
-        */
-      return null;
-    }
+    //Minh Hoa - Setters
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setEmail(String email) { this.email = email; }
+    public void setUserPwd(String userPwd) { this.userPwd = userPwd; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
     //Minh Hoa
-    static boolean makeBooking(){
+    public static boolean updateProfile(String userID, String fullName,
+                                         String email, String userPwd,
+                                         String phoneNumber) {
         /*
-        O day cung can truy cap vao db 1 phan
-        sau khi truy cap ta se dung ham update cai ngay thang checkIn va checkOut
-        update xong thi return gia tri da tao duoc hay chua
+        Cap nhat thong tin nguoi dung trong database
+        Chi cap nhat cac truong khong null
+        Su dung DatabaseControl.insertTable() de thuc thi SQL UPDATE
         */
+        StringBuilder sql = new StringBuilder("UPDATE users SET ");
+        boolean hasField = false;
+
+        if (fullName != null && !fullName.isEmpty()) {
+            sql.append("fullName='").append(fullName).append("'");
+            hasField = true;
+        }
+        if (email != null && !email.isEmpty()) {
+            if (hasField) sql.append(",");
+            sql.append("email='").append(email).append("'");
+            hasField = true;
+        }
+        if (userPwd != null && !userPwd.isEmpty()) {
+            if (hasField) sql.append(",");
+            sql.append("userPwd='").append(userPwd).append("'");
+            hasField = true;
+        }
+        if (phoneNumber != null && !phoneNumber.isEmpty()) {
+            if (hasField) sql.append(",");
+            sql.append("phoneNumber='").append(phoneNumber).append("'");
+            hasField = true;
+        }
+
+        if (!hasField) return false;
+
+        sql.append(" WHERE userID='").append(userID).append("'");
+        DatabaseControl.insertTable(sql.toString());
         return true;
     }
 
     //Minh Hoa
-    static boolean cancleBooking(int BookingID){
+    public static List<Booking> viewBookings(String userID) {
         /*
-        Giong tren kia
+        Lay danh sach booking cua user tu database
+        Su dung DatabaseControl.SelectBooking() de truy van
         */
+        String query = "SELECT * FROM bookings WHERE userID='" + userID + "'";
+        return DatabaseControl.SelectBooking(query, "User");
+    }
+
+    //Minh Hoa
+    public static boolean makeBooking(String userID, int roomID, int managerID,
+                                       Date checkInDate, Date checkOutDate,
+                                       double bookingPrice) {
+        /*
+        Tao booking moi trong database
+        paymentStatus va Approve mac dinh la false
+        */
+        String sql = "INSERT INTO bookings(userID,roomID,managerID,checkInDate," +
+                     "checkOutDate,bookingPrice,paymentStatus,Approve) VALUES('" +
+                     userID + "'," + roomID + "," + managerID + ",'" +
+                     checkInDate + "','" + checkOutDate + "'," + bookingPrice + ",false,false)";
+        DatabaseControl.insertTable(sql);
+        return true;
+    }
+
+    //Minh Hoa
+    public static boolean cancelBooking(int bookingID) {
+        /*
+        Huy booking theo bookingID
+        Xoa record khoi database
+        */
+        String sql = "DELETE FROM bookings WHERE bookingID=" + bookingID;
+        DatabaseControl.insertTable(sql);
         return true;
     }
 }
