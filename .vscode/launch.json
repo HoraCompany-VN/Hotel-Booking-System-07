@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Interface",
+            "request": "launch",
+            "mainClass": "HotelBooking.Interface",
+            "projectName": "HotelBooking"
+        },
+        {
+            "type": "java",
             "name": "LoadDriver",
             "request": "launch",
             "mainClass": "group7.LoadDriver",
