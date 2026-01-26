@@ -27,18 +27,19 @@ public class Booking {
         this.Approve = false;
     }
 
-    static void setApprove(Boolean Allow){
-        //this.Approve = Allow;
+    public void setApprove(Boolean Allow){
+        this.Approve = Allow;
     }
-    static void updateBookingDate(Date checkIn, Date checkOut){
-        
+    public void updateBookingDate(Date checkIn, Date checkOut){
+        this.checkInDate = checkIn;
+        this.checkOutDate = checkOut;
     }
     //Nguyen Quan
-    static double TotalPrice(){
+    public double TotalPrice(){
         return bookingPrice + 0.1 * bookingPrice;
     }
     //Nguyen Quan
-    static void makePayment(){
+    public void makePayment(){
         //Luc nay can tao them 1 class de lam payment lam lop ao
     }
     //Nguyen Quan
