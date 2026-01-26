@@ -36,7 +36,7 @@ public class Booking {
     }
     //Nguyen Quan
     public double TotalPrice(){
-        return bookingPrice + 0.1 * bookingPrice;
+        return this.bookingPrice + 0.1 * this.bookingPrice;
     }
     //Nguyen Quan
     public void makePayment(){
@@ -44,6 +44,6 @@ public class Booking {
     }
     //Nguyen Quan
     public Boolean getPaymentStatus(){
-        return paymentStatus;
+        return this.paymentStatus;
     }
 }
