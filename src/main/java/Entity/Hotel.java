@@ -6,23 +6,33 @@ public class Hotel {
     public String name;
     public String numberPhone;
 
-    //Trinh
+     //Trinh
     //Constructor
-    public Hotel(int hotelID, String nameHotel, String phone){
+    public Hotel(int hotelID, String nameHotel, String phone) {
         this.hotelID = hotelID;
         this.name = nameHotel;
         this.numberPhone = phone;
     }
 
-    //Trinh
-    static void getAvailableRoom(){
+    // Lấy danh sách phòng còn trống của khách sạn
+    public static List<Room> getAvailableRoom(int hotelID) {
+
         /*
-        Tai day can tao 1 thang Room 
-        Room co kha nang ket noi voi ben kia can quan tam toi cai Room.status
-        Dieu quan trong o day la can viec Select sao cho tim nhung room status = availible
-        nen la truoc mat can tim hieu cach truyen lenh va viec lenh dua tren file
-        DatabaseControl.java
-        */
+         Room kết nối với database thông qua DatabaseControl
+         Quan tâm tới Room.status = true (Available)
+         */
+
+        String sql = "SELECT * FROM Room WHERE idHotel = "
+                   + hotelID + " AND statusRoom = true";
+
+        // Gọi DatabaseControl để lấy danh sách phòng
+        return DatabaseControl.SelectRoom(sql, "User");
     }
 
+    // (Optional) dùng để test
+    public void displayInfo() {
+        System.out.println("Hotel ID: " + hotelID);
+        System.out.println("Hotel Name: " + name);
+        System.out.println("Phone: " + numberPhone);
+    }
 }
