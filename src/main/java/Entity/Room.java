@@ -1,5 +1,4 @@
 package Entity;
-
 public class Room {
     private int roomID;
     private int hotelID;
