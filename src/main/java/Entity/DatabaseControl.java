@@ -115,4 +115,21 @@ public class DatabaseControl {
             System.err.println("Error: " + e);
         }
     }
+
+    static void updateTable(String command){
+        ConnectMySQl();
+        try {
+            PreparedStatement ps = conn.prepareStatement(command);
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Record updated successfully.");
+            } else {
+                System.out.println("No record found.");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Database Error: " + e);
+        }
+    }
 }
