@@ -1,5 +1,6 @@
-
+CREATE DATABASE IF NOT EXISTS my_database;
 use Hotel;
+
 -- drop table Guest;
 -- drop table Customer;
 -- drop table Hotel; 
@@ -34,7 +35,7 @@ create table Manager(
 );
 
 create table Room(
-	roomID int PRIMARY KEY,
+	roomID int PRIMARY KEY auto_increment,
     idHotel int,
     CustomerID char(5),
     statusRoom Boolean,
@@ -46,7 +47,7 @@ create table Room(
 );
 
 create table Booking(
-	BookingID int PRIMARY KEY, 
+	BookingID int PRIMARY KEY auto_increment, 
     CustomerID char(5),
     roomID int,
     managerID varchar(3),
