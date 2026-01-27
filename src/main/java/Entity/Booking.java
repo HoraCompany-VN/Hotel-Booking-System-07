@@ -33,6 +33,7 @@ public class Booking {
     public void updateBookingDate(Date checkIn, Date checkOut){
         this.checkInDate = checkIn;
         this.checkOutDate = checkOut;
+         
     }
     //Nguyen Quan
     public double TotalPrice(){
