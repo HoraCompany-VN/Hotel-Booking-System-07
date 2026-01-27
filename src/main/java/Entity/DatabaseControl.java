@@ -132,4 +132,5 @@ public class DatabaseControl {
             System.err.println("Database Error: " + e);
         }
     }
+    //Nguyen Quan can phai build cac ham cho delete
 }
