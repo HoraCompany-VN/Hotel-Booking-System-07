@@ -1,0 +1,3 @@
+*.class
+target/
+Entity/*.class
