@@ -3,17 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package HotelBooking;
+import java.awt.CardLayout;
 
+import javax.swing.JPanel;
 /**
  *
  * @author Wuan
  */
 public class LoginPanel extends javax.swing.JPanel {
-
+    private JPanel cardPanel;
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel() {
+    
+    public LoginPanel(JPanel cardPanel) {
+        this.cardPanel = cardPanel;
         initComponents();
     }
 
@@ -26,109 +30,109 @@ public class LoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        NoTouch4 = new javax.swing.JPanel();
+        Btn_DoSignIn = new javax.swing.JButton();
+        Btn_Cancel = new javax.swing.JButton();
+        Title_Signin = new javax.swing.JLabel();
+        Title_UserName = new javax.swing.JLabel();
+        Title_Pwd = new javax.swing.JLabel();
+        ShowPwd = new javax.swing.JCheckBox();
+        Pattern_PhoneNumber = new javax.swing.JTextField();
+        Pattern_Pwd = new javax.swing.JPasswordField();
+        NoTouch = new javax.swing.JPanel();
+        Btn_Regis = new javax.swing.JButton();
+        NoTouch2 = new javax.swing.JLabel();
+        BeGuest = new javax.swing.JButton();
+        NoTouch3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(748, 467));
 
-        jPanel2.setBackground(new java.awt.Color(223, 234, 253));
+        NoTouch4.setBackground(new java.awt.Color(223, 234, 253));
 
-        jButton3.setBackground(new java.awt.Color(204, 255, 255));
-        jButton3.setText("Sign In");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
+        Btn_DoSignIn.setBackground(new java.awt.Color(204, 255, 255));
+        Btn_DoSignIn.setText("Sign In");
+        Btn_DoSignIn.addActionListener(this::Btn_DoSignInActionPerformed);
 
-        jButton4.setBackground(new java.awt.Color(155, 176, 245));
-        jButton4.setText("Cancel");
+        Btn_Cancel.setBackground(new java.awt.Color(155, 176, 245));
+        Btn_Cancel.setText("Cancel");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout NoTouch4Layout = new javax.swing.GroupLayout(NoTouch4);
+        NoTouch4.setLayout(NoTouch4Layout);
+        NoTouch4Layout.setHorizontalGroup(
+            NoTouch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NoTouch4Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Btn_DoSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(394, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        NoTouch4Layout.setVerticalGroup(
+            NoTouch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NoTouch4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(NoTouch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Btn_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(Btn_DoSignIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Sign In");
+        Title_Signin.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title_Signin.setText("Sign In");
 
-        jLabel2.setText("User Name");
+        Title_UserName.setText("User Name");
 
-        jLabel3.setText("Password");
+        Title_Pwd.setText("Password");
 
-        jCheckBox1.setText("Show Password");
-        jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
+        ShowPwd.setText("Show Password");
+        ShowPwd.addActionListener(this::ShowPwdActionPerformed);
 
-        jTextField1.setText("userPhoneNumber");
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        Pattern_PhoneNumber.setText("userPhoneNumber");
+        Pattern_PhoneNumber.addActionListener(this::Pattern_PhoneNumberActionPerformed);
 
-        jPasswordField1.setText("userPassword");
+        Pattern_Pwd.setText("userPassword");
 
-        jPanel1.setBackground(new java.awt.Color(205, 224, 243));
+        NoTouch.setBackground(new java.awt.Color(205, 224, 243));
 
-        jButton1.setBackground(new java.awt.Color(121, 187, 248));
-        jButton1.setText("Register an Account");
+        Btn_Regis.setBackground(new java.awt.Color(121, 187, 248));
+        Btn_Regis.setText("Register an Account");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Don't have an account ?");
+        NoTouch2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        NoTouch2.setText("Don't have an account ?");
 
-        jButton2.setBackground(new java.awt.Color(121, 187, 248));
-        jButton2.setText("Continue as Guest User");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        BeGuest.setBackground(new java.awt.Color(121, 187, 248));
+        BeGuest.setText("Continue as Guest User");
+        BeGuest.addActionListener(this::BeGuestActionPerformed);
 
-        jLabel5.setText("OR");
+        NoTouch3.setText("OR");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout NoTouchLayout = new javax.swing.GroupLayout(NoTouch);
+        NoTouch.setLayout(NoTouchLayout);
+        NoTouchLayout.setHorizontalGroup(
+            NoTouchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NoTouchLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NoTouch3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(NoTouchLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(NoTouchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BeGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_Regis, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NoTouch2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        NoTouchLayout.setVerticalGroup(
+            NoTouchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NoTouchLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4)
+                .addComponent(NoTouch2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Btn_Regis, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NoTouch3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BeGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
 
@@ -141,77 +145,90 @@ public class LoginPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Title_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jPasswordField1)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox1))
+                                        .addComponent(Pattern_Pwd)
+                                        .addComponent(Pattern_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Title_Pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ShowPwd))
                                 .addGap(40, 40, 40)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(NoTouch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Title_Signin, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(NoTouch4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Title_Signin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Title_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Pattern_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Title_Pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Pattern_Pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ShowPwd))
+                    .addComponent(NoTouch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NoTouch4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Btn_DoSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DoSignInActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        /*
+        Can kiem tra xem user co trong database ko
+        Neu co thi mo cua so tim kiem cho user
+        Neu khong thi hien thong bao loi
+        JOptionPane.showMessageDialog(null, "Login Success");
+        JOptionPane.showMessageDialog(null, "Login Error");
+        */
+    }//GEN-LAST:event_Btn_DoSignInActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void ShowPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPwdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        if (ShowPwd.isSelected()) {
+            Pattern_Pwd.setEchoChar((char)0); // Hiển thị mật khẩu
+        } else {
+            Pattern_Pwd.setEchoChar('\u25CF'); // Ẩn mật khẩu
+        }
+    }//GEN-LAST:event_ShowPwdActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void Pattern_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pattern_PhoneNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_Pattern_PhoneNumberActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BeGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeGuestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        cl.show(cardPanel, "Main");
+    }//GEN-LAST:event_BeGuestActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton Btn_Regis;
+    private javax.swing.JButton BeGuest;
+    private javax.swing.JButton Btn_DoSignIn;
+    private javax.swing.JButton Btn_Cancel;
+    private javax.swing.JCheckBox ShowPwd;
+    private javax.swing.JLabel Title_Signin;
+    private javax.swing.JLabel Title_UserName;
+    private javax.swing.JLabel Title_Pwd;
+    private javax.swing.JLabel NoTouch2;
+    private javax.swing.JLabel NoTouch3;
+    private javax.swing.JPanel NoTouch;
+    private javax.swing.JPanel NoTouch4;
+    private javax.swing.JPasswordField Pattern_Pwd;
+    private javax.swing.JTextField Pattern_PhoneNumber;
     // End of variables declaration//GEN-END:variables
 }

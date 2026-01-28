@@ -11,7 +11,7 @@ import java.util.List;
 public class DatabaseControl {
     static Connection conn = null;
 
-    static void ConnectMySQl(){
+    public static void ConnectMySQl(){
 
         String url = "jdbc:mysql://localhost:3306/Hotel";
         try {
@@ -32,7 +32,7 @@ public class DatabaseControl {
         }
     }
 
-    static List<User> SelectUsers(String query, String Actor){
+    public static List<User> SelectUsers(String query, String Actor){
         ConnectMySQl();
         List<User> users = new ArrayList<>();
         try {
@@ -54,7 +54,7 @@ public class DatabaseControl {
         return users;
     }
 
-    static List<Room> SelectRoom(String query, String Actor){
+    public static List<Room> SelectRoom(String query, String Actor){
         ConnectMySQl();
         List<Room> rooms = new ArrayList<>();
         try {
@@ -77,7 +77,7 @@ public class DatabaseControl {
         return rooms;
     }
 
-    static List<Booking> SelectBooking(String query, String Actor){
+    public static List<Booking> SelectBooking(String query, String Actor){
         ConnectMySQl();
         List<Booking> books = new ArrayList<>();
         try {
@@ -104,7 +104,7 @@ public class DatabaseControl {
         return books;
     }
 
-    static void insertTable(String command){
+    public static void insertTable(String command){
         ConnectMySQl();
         try {
             //Luc nay can build lai qua trinh create table
@@ -116,7 +116,7 @@ public class DatabaseControl {
         }
     }
 
-    static void updateTable(String command){
+    public static void updateTable(String command){
         ConnectMySQl();
         try {
             PreparedStatement ps = conn.prepareStatement(command);
@@ -133,7 +133,7 @@ public class DatabaseControl {
         }
     }
 
-    static void deleteTable(String command) {
+    public static void deleteTable(String command) {
         ConnectMySQl();
         try {
             PreparedStatement ps = conn.prepareStatement(command);

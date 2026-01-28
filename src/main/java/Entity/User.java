@@ -30,6 +30,12 @@ public class User {
     public void setUserPwd(String userPwd) { this.userPwd = userPwd; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
+    public String register() {
+        String sql = "INSERT INTO Customer(CustomerID, fullName, email, userPwd, phoneNumber) VALUES('" +
+                     this.userID + "','" + this.fullName + "','" + this.email + "','" + this.userPwd + "','" + this.phoneNumber + "')";
+        return sql;
+    }
+
     public static boolean updateProfile(String customerID, String fullName, String email, String userPwd, String phoneNumber) {
         StringBuilder sql = new StringBuilder("UPDATE Customer SET ");
         boolean hasField = false;
@@ -61,8 +67,8 @@ public class User {
         return true;
     }
 
-    public static List<Booking> viewBookings(String customerID) {
-        String query = "SELECT * FROM Booking WHERE CustomerID='" + customerID + "'";
+    public List<Booking> viewBookings() {
+        String query = "SELECT * FROM Booking WHERE CustomerID='" + this.userID + "'";
         return DatabaseControl.SelectBooking(query, "User");
     }
 

@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package HotelBooking;
-
+import Entity.DatabaseControl;
+import Entity.User;
 /**
  *
  * @author Wuan
  */
 public class RegisterPanel extends javax.swing.JPanel {
-
+    static int num = 0;
     /**
      * Creates new form RegisterPanel
      */
@@ -25,54 +26,55 @@ public class RegisterPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        createAccount = new javax.swing.JButton();
+        backToLogin = new javax.swing.JButton();
+        Title = new javax.swing.JLabel();
+        Title_FullName = new javax.swing.JLabel();
+        Pattern_Fullname = new javax.swing.JTextField();
+        Title_PhoneNumber = new javax.swing.JLabel();
+        Pattern_PhoneNumber = new javax.swing.JTextField();
+        Title_Email = new javax.swing.JLabel();
+        Pattern_Email = new javax.swing.JTextField();
+        Title_Pwd = new javax.swing.JLabel();
+        Pattern_Pwd = new javax.swing.JPasswordField();
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("CREATE ACCOUNT");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        createAccount.setBackground(new java.awt.Color(0, 255, 51));
+        createAccount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        createAccount.setForeground(new java.awt.Color(255, 255, 255));
+        createAccount.setText("CREATE ACCOUNT");
+        createAccount.addActionListener(this::createAccountActionPerformed);
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("BACK TO LOGIN");
+        backToLogin.setBackground(new java.awt.Color(204, 204, 204));
+        backToLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        backToLogin.setForeground(new java.awt.Color(255, 255, 255));
+        backToLogin.setText("BACK TO LOGIN");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CREATE ACCOUNT");
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title.setText("CREATE ACCOUNT");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Full Name");
+        Title_FullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Title_FullName.setText("Full Name");
 
-        jTextField1.setText("Nguyen Van A");
+        Pattern_Fullname.setText("Nguyen Van A");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Phone Number");
+        Title_PhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Title_PhoneNumber.setText("Phone Number");
 
-        jTextField2.setText("0123456789");
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        Pattern_PhoneNumber.setText("0123456789");
+        Pattern_PhoneNumber.addActionListener(this::Pattern_PhoneNumberActionPerformed);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Email");
+        Title_Email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Title_Email.setText("Email");
 
-        jTextField3.setText("xxxx@gmail.com");
+        Pattern_Email.setText("xxxx@gmail.com");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Password");
+        Title_Pwd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Title_Pwd.setText("Password");
 
-        jPasswordField1.setText("jPasswordField1");
+        Pattern_Pwd.setText("Pattern_Pwd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,71 +83,78 @@ public class RegisterPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Pattern_Fullname)
+                            .addComponent(Pattern_PhoneNumber)
+                            .addComponent(Pattern_Email)
+                            .addComponent(Pattern_Pwd)
+                            .addComponent(createAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(backToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Title_Pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Title_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Title_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Title_FullName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(Title_FullName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pattern_Fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(Title_PhoneNumber)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pattern_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Title_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pattern_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(Title_Pwd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pattern_Pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addComponent(jButton1)
+                .addComponent(createAccount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(backToLogin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String numConvert = Integer.toString(num);
+        num += 1;
+        User user = new User(numConvert, Pattern_Fullname.getText(), Pattern_Email.getText(),
+            new String(Pattern_Pwd.getPassword()), Pattern_PhoneNumber.getText());
+        DatabaseControl dbControl = new DatabaseControl();
+        dbControl.insertTable(user.register());
+        new LoginPanel();
+    }//GEN-LAST:event_createAccountActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void Pattern_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pattern_PhoneNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_Pattern_PhoneNumberActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton createAccount;
+    private javax.swing.JButton backToLogin;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel Title_FullName;
+    private javax.swing.JLabel Title_PhoneNumber;
+    private javax.swing.JLabel Title_Email;
+    private javax.swing.JLabel Title_Pwd;
+    private javax.swing.JPasswordField Pattern_Pwd;
+    private javax.swing.JTextField Pattern_Fullname;
+    private javax.swing.JTextField Pattern_PhoneNumber;
+    private javax.swing.JTextField Pattern_Email;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,18 +1,21 @@
 package HotelBooking;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 ;
 
 public class Interface extends JFrame {
     public int Width = 1080;
     public int Height = 1080;
-    public Interface(){
-
+    private JPanel cardPanel;
+    public Interface(JPanel cardPanel){
+        this.cardPanel = cardPanel;
         JFrame window = new JFrame("Hotel Booking System");
         window.setSize(Width, Height);
         window.setLocationRelativeTo(null);
@@ -48,5 +51,10 @@ public class Interface extends JFrame {
         Image img = icon.getImage();
         Image resizedImg = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImg);
+    }
+
+    private void switchToLogin() {
+        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        cl.show(cardPanel, "Login");
     }
 }
