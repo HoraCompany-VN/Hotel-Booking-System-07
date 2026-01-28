@@ -129,14 +129,13 @@ public class RegisterPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
-        // TODO add your handling code here:
         String numConvert = Integer.toString(num);
         num += 1;
         User user = new User(numConvert, Pattern_Fullname.getText(), Pattern_Email.getText(),
             new String(Pattern_Pwd.getPassword()), Pattern_PhoneNumber.getText());
-        DatabaseControl dbControl = new DatabaseControl();
-        dbControl.insertTable(user.register());
-        new LoginPanel();
+        DatabaseControl.insertTable(user.register());
+        javax.swing.JOptionPane.showMessageDialog(this, "Account created successfully!");
+        HotelBooking.showPanel("Login");
     }//GEN-LAST:event_createAccountActionPerformed
 
     private void Pattern_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pattern_PhoneNumberActionPerformed

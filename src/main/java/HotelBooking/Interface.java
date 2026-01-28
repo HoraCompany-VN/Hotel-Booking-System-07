@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-;
 
 public class Interface extends JFrame {
     public int Width = 1080;
@@ -21,10 +20,14 @@ public class Interface extends JFrame {
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Main panel with CardLayout
+        JPanel mainPanel = new JPanel(new CardLayout());
+        
+        // Home panel with background
+        JPanel homePanel = new JPanel(new BorderLayout());
         JLabel label = new JLabel("Havana Airport Hotel");
         label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 36)); 
         label.setForeground(java.awt.Color.WHITE);
-        window.add(label, BorderLayout.CENTER); 
 
         ImageIcon anhNen = new ImageIcon("database\\Picture\\im_interface.jpg");
         anhNen = resizeIcon(anhNen, Width, Height);
@@ -41,8 +44,29 @@ public class Interface extends JFrame {
                 "</div>" +
             "</div>" +
         "</html>";
-
         label.setText(html);
+        //đã sửa
+        homePanel.add(label, BorderLayout.CENTER);
+        
+        // Book Now button
+        javax.swing.JButton btnBookNow = new javax.swing.JButton("Book Now");
+        btnBookNow.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 16));
+        btnBookNow.setBackground(new java.awt.Color(0, 102, 204));
+        btnBookNow.setForeground(java.awt.Color.WHITE);
+        btnBookNow.addActionListener(e -> {
+            CardLayout cl = (CardLayout) mainPanel.getLayout();
+            cl.show(mainPanel, "BookingConfirmation");
+        });
+        homePanel.add(btnBookNow, BorderLayout.SOUTH);
+        
+        // Add BookingConfirmationPanel
+        BookingConfirmationPanel bookingPanel = new BookingConfirmationPanel(mainPanel);
+        
+        // Add panels to CardLayout
+        mainPanel.add(homePanel, "Home");
+        mainPanel.add(bookingPanel, "BookingConfirmation");
+        
+        window.add(mainPanel);
         window.setVisible(true);
 
         window.addMouseListener(new java.awt.event.MouseAdapter() {});

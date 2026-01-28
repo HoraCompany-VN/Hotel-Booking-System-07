@@ -1,38 +1,62 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package HotelBooking;
+
+import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-/**
- *
- * @author Wuan
- */
+import javax.swing.SwingUtilities;
+
 public class HotelBooking {
+    
+    // Shared references for navigation between panels
+    public static JPanel cardPanel;
+    public static BookingConfirmationPanel bookingPanel;
+    public static SearchRoomPanel searchRoomPanel;
+    public static Entity.User currentUser;
+    
     public static void main(String[] args) {
-        // Create main frame
-        JFrame frame = new JFrame("Hotel Booking");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setLocationRelativeTo(null);
-        
-        // Create CardLayout panel manager
-        JPanel cardPanel = new JPanel(new java.awt.CardLayout());
-        
-        // Add panels to CardLayout
-        LoginPanel loginPanel = new LoginPanel(cardPanel);
-        Interface interfacePanel = new Interface(cardPanel);
-        
-        //cardPanel nay dung de chua cac panel khac
-        cardPanel.add(loginPanel, "Login");
-        cardPanel.add(interfacePanel, "Main");
-        
-        frame.add(cardPanel);
-        frame.setVisible(true);
-        
-        // Show login panel first
-        java.awt.CardLayout cl = (java.awt.CardLayout) cardPanel.getLayout();
-        cl.show(cardPanel, "Login");
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Hotel Booking System");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(900, 700);
+            frame.setLocationRelativeTo(null);
+            
+            // Create CardLayout panel manager
+            cardPanel = new JPanel(new CardLayout());
+            
+            // Create all panels
+            LoginPanel loginPanel = new LoginPanel(cardPanel);
+            RegisterPanel registerPanel = new RegisterPanel();
+            searchRoomPanel = new SearchRoomPanel();
+            bookingPanel = new BookingConfirmationPanel(cardPanel);
+            
+            // Add panels to CardLayout
+            cardPanel.add(loginPanel, "Login");
+            cardPanel.add(registerPanel, "Register");
+            cardPanel.add(searchRoomPanel, "SearchRoom");
+            cardPanel.add(bookingPanel, "BookingConfirmation");
+            
+            frame.add(cardPanel);
+            frame.setVisible(true);
+            
+            // Show login panel first
+            showPanel("Login");
+        });
+    }
+    
+    public static void showPanel(String panelName) {
+        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        cl.show(cardPanel, panelName);
+    }
+    
+    public static void setCurrentUser(Entity.User user) {
+        currentUser = user;
+        if (user != null && bookingPanel != null) {
+            bookingPanel.prefillUser(user);
+        }
+    }
+    
+    public static Entity.User getCurrentUser() {
+        return currentUser;
     }
 }
