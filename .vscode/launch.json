@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HotelBooking",
+            "request": "launch",
+            "mainClass": "HotelBooking.HotelBooking",
+            "projectName": "HotelBooking"
+        },
+        {
+            "type": "java",
             "name": "TestSearchRoom",
             "request": "launch",
             "mainClass": "HotelBooking.TestSearchRoom",
