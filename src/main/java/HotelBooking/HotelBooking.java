@@ -24,6 +24,7 @@ public class HotelBooking {
         LoginPanel loginPanel = new LoginPanel(cardPanel);
         Interface interfacePanel = new Interface(cardPanel);
         
+        //cardPanel nay dung de chua cac panel khac
         cardPanel.add(loginPanel, "Login");
         cardPanel.add(interfacePanel, "Main");
         
