@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.List;
-
+// Trinh 
 public class SearchRoomPanel extends JPanel {
 
     private JTextField txtFacilities;
