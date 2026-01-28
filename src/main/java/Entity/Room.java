@@ -18,7 +18,15 @@ public class Room {
         this.facilities = facilities;
         this.description = description;
     }
+    // Getter Room ID
+    public int getRoomID() {
+        return roomID;
+    }
 
+    // Getter Hotel ID
+    public int getHotelID() {
+        return hotelID;
+    }
     //Trinh
     // Hiển thị thông tin phòng 
     public void displayInfo() {
