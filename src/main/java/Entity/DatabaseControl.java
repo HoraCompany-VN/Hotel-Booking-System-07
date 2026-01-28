@@ -132,5 +132,19 @@ public class DatabaseControl {
             System.err.println("Database Error: " + e);
         }
     }
-    //Nguyen Quan can phai build cac ham cho delete
+
+    static void deleteTable(String command) {
+        ConnectMySQl();
+        try {
+            PreparedStatement ps = conn.prepareStatement(command);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Record deleted successfully.");
+            } else {
+                System.out.println("No record found to delete.");
+            }
+        } catch (Exception e) {
+            System.err.println("Database Error: " + e);
+        }
+    }
 }
