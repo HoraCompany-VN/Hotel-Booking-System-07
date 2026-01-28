@@ -10,6 +10,6 @@ package HotelBooking;
  */
 public class HotelBooking {
     public static void main(String[] args) {
-        Interface inf = new Interface();
+        new Interface();
     }
 }
