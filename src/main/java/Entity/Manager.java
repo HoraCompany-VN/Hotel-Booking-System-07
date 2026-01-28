@@ -1,57 +1,98 @@
 package Entity;
 
+import java.util.List;
+
+//Thao works
 public class Manager {
     private String managerID;
-    private int hotelID;
+    private int idHotel;
 
-    //Thao works
-    //Constructor
-    public Manager(String m_id, int hotelID){
-        this.managerID = m_id;
-        this.hotelID = hotelID;
-    }
-    //Manager chu yeu can xay dung ket noi voi databse truoc
-    //Tao 1 cai bien DatabaseControl
-
-    //Thao
-    public void manageRoom(){
-        /*
-        manageRoom thi can liet ke no co nhung chuc nang nao doi voi Room vi du
-        + Them
-        + Xoa
-        + Cap nhap
-
-        Trong do thi can phai xay dung cac cau lenh 
-        Them thi ta insert va ta build giong nhu hoi hoc sql
-        Xoa thi Delete chu yeu o day la xoa phong
-        Cap nhat thi co the nen cap nhat 1 hay 2 thong tin gi do thoi la du
-        */
+    public Manager(String managerID, int idHotel) {
+        this.managerID = managerID;
+        this.idHotel = idHotel;
     }
 
-    //Thao
-    public void manageBookings(){
-        /*
-        cai booking nay no quan trong o diem la duyet yeu cau dat phong
-        B1: Select Booking from * gi do do
-        B2: Update -> o day cu tim cach auto duyet cho Booking bang cach
-        2.1 Call method thang booking va setApprove(<true hay false>)
-        2.2 Database tu update minh khong can update 
-        2.3 Can xay dung 1 ham neu setApprove(false) thi phai co 
-            delete Booking
-        2.4 Done
-        */
-    }  
+    public String getManagerID() { return managerID; }
+    public int getIdHotel() { return idHotel; }
 
-    //Thao
-    public void manageUser(){
-        /*
-        Them
-        Xoa
-        Cap nhat
-        Duyet nguoi dang ki
+    // ROOM MANAGEMENT
+    public boolean addRoom(String facilities, String description) {
+        String sql = "INSERT INTO Room(idHotel,statusRoom,facilities,description_room) VALUES(" +
+                     idHotel + ",true,'" + facilities + "','" + description + "')";
+        DatabaseControl.insertTable(sql);
+        return true;
+    }
 
-        Build truoc command SQL cho 3 chuc nang dau di nha con Duyet nguoi 
-        dang ki chua co y tuong lam
-        */
+    public boolean deleteRoom(int roomID) {
+        String sql = "DELETE FROM Room WHERE roomID=" + roomID + " AND idHotel=" + idHotel;
+        DatabaseControl.deleteTable(sql);
+        return true;
+    }
+
+    public boolean updateRoom(int roomID, String facilities, String description) {
+        String sql = "UPDATE Room SET facilities='" + facilities + "',description_room='" + description + 
+                     "' WHERE roomID=" + roomID + " AND idHotel=" + idHotel;
+        DatabaseControl.updateTable(sql);
+        return true;
+    }
+
+    public boolean updateRoomStatus(int roomID, boolean status) {
+        String sql = "UPDATE Room SET statusRoom=" + status + " WHERE roomID=" + roomID;
+        DatabaseControl.updateTable(sql);
+        return true;
+    }
+
+    public List<Room> viewRooms() {
+        String sql = "SELECT * FROM Room WHERE idHotel=" + idHotel;
+        return DatabaseControl.SelectRoom(sql, "Manager");
+    }
+
+    // BOOKING MANAGEMENT
+    public List<Booking> viewBookings() {
+        String sql = "SELECT * FROM Booking WHERE managerID='" + managerID + "'";
+        return DatabaseControl.SelectBooking(sql, "Manager");
+    }
+
+    public List<Booking> viewPendingBookings() {
+        String sql = "SELECT * FROM Booking WHERE managerID='" + managerID + "' AND paymentStatus=false";
+        return DatabaseControl.SelectBooking(sql, "Manager");
+    }
+
+    public boolean confirmBooking(int bookingID) {
+        String sql = "UPDATE Booking SET paymentStatus=true WHERE BookingID=" + bookingID;
+        DatabaseControl.updateTable(sql);
+        return true;
+    }
+
+    public boolean cancelBooking(int bookingID) {
+        String sql = "DELETE FROM Booking WHERE BookingID=" + bookingID;
+        DatabaseControl.deleteTable(sql);
+        return true;
+    }
+
+    // CUSTOMER MANAGEMENT
+    public List<User> viewCustomers() {
+        String sql = "SELECT * FROM Customer";
+        return DatabaseControl.SelectUsers(sql, "Manager");
+    }
+
+    public boolean addCustomer(String customerID, String fullName, String email, String pwd, String phone) {
+        String sql = "INSERT INTO Customer(CustomerID,fullName,email,userPwd,phoneNumber) VALUES('" +
+                     customerID + "','" + fullName + "','" + email + "','" + pwd + "','" + phone + "')";
+        DatabaseControl.insertTable(sql);
+        return true;
+    }
+
+    public boolean deleteCustomer(String customerID) {
+        String sql = "DELETE FROM Customer WHERE CustomerID='" + customerID + "'";
+        DatabaseControl.deleteTable(sql);
+        return true;
+    }
+
+    public boolean updateCustomer(String customerID, String fullName, String email, String phone) {
+        String sql = "UPDATE Customer SET fullName='" + fullName + "',email='" + email + 
+                     "',phoneNumber='" + phone + "' WHERE CustomerID='" + customerID + "'";
+        DatabaseControl.updateTable(sql);
+        return true;
     }
 }
