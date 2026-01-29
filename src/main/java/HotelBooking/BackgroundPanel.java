@@ -4,8 +4,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.JPanel;
 
+import javax.swing.JPanel;
+//Do not using this class
+//This class is use to test the background image loading
 public class BackgroundPanel extends JPanel {
 
     private Image background;

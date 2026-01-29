@@ -1,6 +1,8 @@
 package Entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Booking {
     private int bookingID;
@@ -27,24 +29,41 @@ public class Booking {
         this.Approve = false;
     }
 
-    public void setApprove(Boolean Allow){
-        this.Approve = Allow;
+    public int getBookingID() { return this.bookingID; }
+    public String getUserID() { return this.userID; }
+    public int getRoomID() { return this.roomID; }
+    public int getManagerID() { return this.managerID; }
+    public Date getCheckInDate() { return this.checkInDate; }
+    public Date getCheckOutDate() { return this.checkOutDate; }
+    public double getBookingPrice() { return this.bookingPrice; }
+    public Boolean getApprove() { return this.Approve; }
+
+    // Setter
+    public void setBookingID(int bookingID) { this.bookingID = bookingID; }
+    public void setUserID(String userID) { this.userID = userID; }
+    public void setRoomID(int roomID) { this.roomID = roomID; }
+    public void setManagerID(int managerID) { this.managerID = managerID; }
+    public void setCheckInDate(Date checkInDate) { this.checkInDate = checkInDate; }
+    public void setCheckOutDate(Date checkOutDate) { this.checkOutDate = checkOutDate; }
+    public void setBookingPrice(double bookingPrice) { this.bookingPrice = bookingPrice; }
+    public void setPaymentStatus(Boolean paymentStatus) { this.paymentStatus = paymentStatus; }
+
+    public double TotalPrice(){ 
+        return this.bookingPrice * 1.1; 
     }
-    public void updateBookingDate(Date checkIn, Date checkOut){
-        this.checkInDate = checkIn;
-        this.checkOutDate = checkOut;
-         
-    }
-    //Nguyen Quan
-    public double TotalPrice(){
-        return this.bookingPrice + 0.1 * this.bookingPrice;
-    }
-    //Nguyen Quan
-    public void makePayment(){
-        //Luc nay can tao them 1 class de lam payment lam lop ao
-    }
-    //Nguyen Quan
-    public Boolean getPaymentStatus(){
-        return this.paymentStatus;
+
+    public boolean isUser(String userID){
+        try {
+            String sql = "SELECT * FROM Booking WHERE userID = ?";
+            List<User> users = new ArrayList<>();
+            users = DatabaseControl.SelectUsers(sql, "Customer");
+            if (users == null) {
+                return false;
+            }
+                return true;
+        }catch (Exception e) {
+            System.err.println("Error: " + e);
+            return false;
+        }
     }
 }
