@@ -32,7 +32,7 @@ public class HotelBooking {
             bookingPanel = new BookingConfirmationPanel(cardPanel);
             
             // Add panels to CardLayout
-            cardPanel.add(Interface, "Main");
+            cardPanel.add(Interface, "Interface");
             cardPanel.add(loginPanel, "Login");
             cardPanel.add(registerPanel, "Register");
             cardPanel.add(searchRoomPanel, "SearchRoom");

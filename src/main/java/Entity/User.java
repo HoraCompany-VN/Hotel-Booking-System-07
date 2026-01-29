@@ -31,7 +31,7 @@ public class User {
     public void setUserPwd(String userPwd) { this.userPwd = userPwd; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public static String register() {
+    public String register() {
         String sql = "INSERT INTO Customer(CustomerID, fullName, email, userPwd, phoneNumber) VALUES('" +
                      this.userID + "','" + this.fullName + "','" + this.email + "','" + this.userPwd + "','" + this.phoneNumber + "')";
         return sql;

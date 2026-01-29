@@ -58,6 +58,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         Btn_Cancel.setBackground(new java.awt.Color(155, 176, 245));
         Btn_Cancel.setText("Cancel");
+        Btn_Cancel.addActionListener(this::Btn_CancelActionPerformed);
 
         javax.swing.GroupLayout NoTouch4Layout = new javax.swing.GroupLayout(NoTouch4);
         NoTouch4.setLayout(NoTouch4Layout);
@@ -233,7 +234,10 @@ public class LoginPanel extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, "Interface");
     }//GEN-LAST:event_BeGuestActionPerformed
-
+    private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_Btn_CancelActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Regis;
     private javax.swing.JButton BeGuest;
