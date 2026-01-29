@@ -18,7 +18,7 @@ public class HotelBooking {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Hotel Booking System");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(900, 700);
+            frame.setSize(1080, 1080);
             frame.setLocationRelativeTo(null);
             
             // Create CardLayout panel manager
@@ -32,7 +32,7 @@ public class HotelBooking {
             bookingPanel = new BookingConfirmationPanel(cardPanel);
             
             // Add panels to CardLayout
-            cardPanel.add(Interface, "Main");
+            cardPanel.add(Interface, "Interface");
             cardPanel.add(loginPanel, "Login");
             cardPanel.add(registerPanel, "Register");
             cardPanel.add(searchRoomPanel, "SearchRoom");

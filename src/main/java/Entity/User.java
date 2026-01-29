@@ -100,4 +100,10 @@ public class User {
         return false;
     }
     }
+
+    public static User getUserByPhone(String phoneNumber) {
+        String sql = "SELECT * FROM User WHERE phoneNumber = '" + phoneNumber + "'";
+        List<User> users = DatabaseControl.SelectUsers(sql, "User");
+        return users.isEmpty() ? null : users.get(0);
+    }
 }

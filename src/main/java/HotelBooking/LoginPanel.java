@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package HotelBooking;
-import java.awt.CardLayout;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -190,30 +188,52 @@ public class LoginPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_DoSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DoSignInActionPerformed
-        // TODO add your handling code here:
-        String phoneNumber = Pattern_PhoneNumber.getText();
-        String password = new String(Pattern_Pwd.getPassword());
-        if (User.isUser(phoneNumber, password)) {;
-            JOptionPane.showMessageDialog(null, "Login Success");
-            CardLayout cl = (CardLayout) cardPanel.getLayout();
-            cl.show(cardPanel, "SearchRoom"); //SearchRoom has full name is SearchRoomPanel
+    private void Btn_DoSignInActionPerformed(java.awt.event.ActionEvent evt) {
+    String phoneNumber = Pattern_PhoneNumber.getText().trim();
+    String password = new String(Pattern_Pwd.getPassword());
+    
+    // Validate input
+    if (phoneNumber.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Please enter phone number and password.", 
+            "Input Error", 
+            JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    // Kiểm tra đăng nhập
+    if (User.isUser(phoneNumber, password)) {
+
+            User currentUser = User.getUserByPhone(phoneNumber); 
+            if (currentUser != null) {
+                HotelBooking.setCurrentUser(currentUser);
+            }
+            
+            JOptionPane.showMessageDialog(this, 
+                "Login Success!", 
+                "Success", 
+                JOptionPane.INFORMATION_MESSAGE);
+            
+
+            HotelBooking.showPanel("SearchRoom");
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid phone number or password.", "Login Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                "Invalid phone number or password.", 
+                "Login Error", 
+                JOptionPane.ERROR_MESSAGE);
         }
-        /*
-        Can kiem tra xem user co trong database ko
-        Neu co thi mo cua so tim kiem cho user
-        Neu khong thi hien thong bao loi
-        JOptionPane.showMessageDialog(null, "Login Success");
-        JOptionPane.showMessageDialog(null, "Login Error");
-        */
     }//GEN-LAST:event_Btn_DoSignInActionPerformed
-//Can chinh lai cho nay
-    private void Btn_RegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RegisActionPerformed
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
-        cl.show(cardPanel, "Register");
+
+    private void Btn_RegisActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+        System.out.println("Navigating to Register panel..."); // Debug log
+        HotelBooking.showPanel("Register");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Error opening registration page: " + e.getMessage(), 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_Btn_RegisActionPerformed
 
     private void ShowPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPwdActionPerformed
@@ -227,13 +247,22 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void Pattern_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pattern_PhoneNumberActionPerformed
         // TODO add your handling code here:
+        //Nothing to do here
     }//GEN-LAST:event_Pattern_PhoneNumberActionPerformed
-//Can chinh lai cho nay
-    private void BeGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeGuestActionPerformed
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
-        cl.show(cardPanel, "Interface");
+
+    private void BeGuestActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+        System.out.println("Continuing as guest..."); // Debug log
+        HotelBooking.setCurrentUser(null); // Guest không có user
+        HotelBooking.showPanel("SearchRoom");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Error opening guest interface: " + e.getMessage(), 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BeGuestActionPerformed
+
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
         // TODO add your handling code here:
         System.exit(0);

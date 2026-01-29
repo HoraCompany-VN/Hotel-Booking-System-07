@@ -5,22 +5,17 @@ import java.awt.CardLayout;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Interface extends JFrame {
+public class Interface extends JPanel {
     public int Width = 1080;
     public int Height = 1080;
     private JPanel cardPanel;
 
     public Interface(JPanel cardPanel){
         this.cardPanel = cardPanel;
-        JFrame window = new JFrame("Hotel Booking System");
-        window.setSize(Width, Height);
-        window.setLocationRelativeTo(null);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        this.setLayout(new BorderLayout());
         // Main panel with CardLayout
         JPanel mainPanel = new JPanel(new CardLayout());
         
@@ -67,10 +62,10 @@ public class Interface extends JFrame {
         mainPanel.add(homePanel, "Home");
         mainPanel.add(loginPanel, "Login");
         
-        window.add(mainPanel);
-        window.setVisible(true);
+        this.add(mainPanel);
+        this.setVisible(true);
 
-        window.addMouseListener(new java.awt.event.MouseAdapter() {});
+        this.addMouseListener(new java.awt.event.MouseAdapter() {});
     }
     public static ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
         Image img = icon.getImage();
