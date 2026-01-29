@@ -115,6 +115,15 @@ public class SearchRoomPanel extends JPanel {
     }
 
     private void bookRoom() {
+        // Check if user is guest - redirect to login
+        if (HotelBooking.getCurrentUser() == null) {
+            JOptionPane.showMessageDialog(this, 
+                "Please login or register to book a room!", 
+                "Login Required", JOptionPane.WARNING_MESSAGE);
+            HotelBooking.showPanel("Login");
+            return;
+        }
+
         int row = tblRoom.getSelectedRow();
         if (row < 0) {
             JOptionPane.showMessageDialog(this, "Please select a room first!", "No Selection", JOptionPane.WARNING_MESSAGE);

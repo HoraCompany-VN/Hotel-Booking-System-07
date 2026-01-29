@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS my_database;
-use Hotel;
+CREATE DATABASE IF NOT EXISTS Hotel;
+USE Hotel;
 
 -- drop table Guest;
 -- drop table Customer;

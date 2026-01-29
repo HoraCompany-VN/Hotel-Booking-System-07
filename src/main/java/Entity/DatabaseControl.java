@@ -41,7 +41,7 @@ public class DatabaseControl {
 
         while(rs.next()){
             users.add(new User(
-            rs.getString("userID"),
+            rs.getString("CustomerID"),
             rs.getString("fullName"),
             rs.getString("email"),
             rs.getString("userPwd"),
@@ -145,6 +145,39 @@ public class DatabaseControl {
             }
         } catch (Exception e) {
             System.err.println("Database Error: " + e);
+        }
+    }
+
+    public static boolean checkManagerLogin(String phoneNumber, String password) {
+        ConnectMySQl();
+        try {
+            String sql = "SELECT COUNT(*) FROM Manager WHERE phoneNumber = ? AND managerPwd = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, phoneNumber);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            System.err.println("Manager login check error: " + e);
+        }
+        return false;
+    }
+
+    public static void updateRoomStatus(int roomID, boolean status) {
+        ConnectMySQl();
+        try {
+            String sql = "UPDATE Room SET statusRoom = ? WHERE roomID = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, status);
+            ps.setInt(2, roomID);
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
+                System.out.println("Room " + roomID + " status updated to " + (status ? "Available" : "Booked"));
+            }
+        } catch (Exception e) {
+            System.err.println("Update room status error: " + e);
         }
     }
 }

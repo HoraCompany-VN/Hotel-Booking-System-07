@@ -88,12 +88,16 @@ public class User {
 
     public static boolean isUser(String phonenumber, String password){
     try {
+        // Check Customer table first
         String sql = "SELECT * FROM Customer WHERE phoneNumber = '" 
                    + phonenumber + "' AND userPwd = '" + password + "'";
-
         List<User> users = DatabaseControl.SelectUsers(sql, "Customer");
-
-        return users != null && !users.isEmpty();
+        if (users != null && !users.isEmpty()) {
+            return true;
+        }
+        
+        // Check Manager table using count query
+        return DatabaseControl.checkManagerLogin(phonenumber, password);
 
     } catch (Exception e) {
         System.err.println("Error: " + e);

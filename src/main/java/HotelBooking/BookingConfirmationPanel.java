@@ -24,6 +24,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import Entity.DatabaseControl;
 import Entity.Payment;
 import Entity.User;
 
@@ -133,6 +134,9 @@ public class BookingConfirmationPanel extends JPanel {
     }
 
     private void success(String method) {
+        // Mark room as booked (unavailable)
+        DatabaseControl.updateRoomStatus(roomID, false);
+        
         DateTimeFormatter f = DateTimeFormatter.ofPattern("MMM d, yyyy");
         msg("Booking Confirmed!\n\nRoom: " + roomType + "\nGuest: " + txtName.getText() + 
             "\n" + checkIn.format(f) + " → " + checkOut.format(f) + "\nPayment: " + method);
