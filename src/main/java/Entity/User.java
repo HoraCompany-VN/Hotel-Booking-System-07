@@ -1,7 +1,6 @@
 package Entity;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 //Minh Hoa
@@ -89,14 +88,14 @@ public class User {
 
     public static boolean isUser(String phonenumber, String password){
     try {
-        String sql = "SELECT * FROM Customer WHERE phoneNumber =" + phonenumber + " and userPwd = " + password;
-        List<User> users = new ArrayList<>();
-        users = DatabaseControl.SelectUsers(sql, "Customer");
-        if (users.get(0) == null) {
-            return false;
-        }
-            return true;
-    }catch (Exception e) {
+        String sql = "SELECT * FROM Customer WHERE phoneNumber = '" 
+                   + phonenumber + "' AND userPwd = '" + password + "'";
+
+        List<User> users = DatabaseControl.SelectUsers(sql, "Customer");
+
+        return users != null && !users.isEmpty();
+
+    } catch (Exception e) {
         System.err.println("Error: " + e);
         return false;
     }
