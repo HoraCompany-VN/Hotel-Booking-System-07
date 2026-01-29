@@ -64,11 +64,11 @@ public class DatabaseControl {
         while(rs.next()){
             rooms.add(new Room(
             rs.getInt("roomID"),
-            rs.getInt("hotelID"),
-            rs.getString("userID"),
-            rs.getBoolean("status"),
+            rs.getInt("idHotel"),
+            rs.getString("CustomerID"),
+            rs.getBoolean("statusRoom"),
             rs.getString("facilities"),
-            rs.getString("description")
+            rs.getString("description_room")
         ));
         }
         } catch (Exception e) {
@@ -87,15 +87,15 @@ public class DatabaseControl {
         while(rs.next()){
             books.add(new Booking
         (
-            rs.getInt("bookingID"),
-            rs.getString("userID"),
+            rs.getInt("BookingID"),
+            rs.getString("CustomerID"),
             rs.getInt("roomID"),
-            rs.getInt("managerID"),
+            rs.getString("managerID"),
             rs.getDate("checkInDate"),
             rs.getDate("checkOutDate"),
             rs.getDouble("bookingPrice"),
             rs.getBoolean("paymentStatus"),
-            rs.getBoolean("Approve")       
+            false
         ));
         }
         } catch (Exception e) {
