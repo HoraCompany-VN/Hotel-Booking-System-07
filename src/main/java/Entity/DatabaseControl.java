@@ -11,20 +11,20 @@ import java.util.List;
 public class DatabaseControl {
     static Connection conn = null;
 
-    public static void ConnectMySQl(){
+    public static void ConnectMySQl() {
 
         String url = "jdbc:mysql://localhost:3306/Hotel";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver Loaded");
-        } catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
 
-        try {    
-            conn = DriverManager.getConnection(url, "root", "MySQLQuan123");
+        try {
+            conn = DriverManager.getConnection(url, "root", "Hoadaihiep123");
             System.out.println("Database connection");
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             // handle the error
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
@@ -32,82 +32,78 @@ public class DatabaseControl {
         }
     }
 
-    public static List<User> SelectUsers(String query, String Actor){
+    public static List<User> SelectUsers(String query, String Actor) {
         ConnectMySQl();
         List<User> users = new ArrayList<>();
         try {
             PreparedStatement st = conn.prepareStatement(query);
             ResultSet rs = st.executeQuery();
 
-        while(rs.next()){
-            users.add(new User(
-            rs.getString("CustomerID"),
-            rs.getString("fullName"),
-            rs.getString("email"),
-            rs.getString("userPwd"),
-            rs.getString("phoneNumber")
-        ));
-        }
+            while (rs.next()) {
+                users.add(new User(
+                        rs.getString("CustomerID"),
+                        rs.getString("fullName"),
+                        rs.getString("email"),
+                        rs.getString("userPwd"),
+                        rs.getString("phoneNumber")));
+            }
         } catch (Exception e) {
             System.err.println("Error: " + e);
         }
         return users;
     }
 
-    public static List<Room> SelectRoom(String query, String Actor){
+    public static List<Room> SelectRoom(String query, String Actor) {
         ConnectMySQl();
         List<Room> rooms = new ArrayList<>();
         try {
             PreparedStatement st = conn.prepareStatement(query);
             ResultSet rs = st.executeQuery();
 
-        while(rs.next()){
-            rooms.add(new Room(
-            rs.getInt("roomID"),
-            rs.getInt("idHotel"),
-            rs.getString("CustomerID"),
-            rs.getBoolean("statusRoom"),
-            rs.getString("facilities"),
-            rs.getString("description_room")
-        ));
-        }
+            while (rs.next()) {
+                rooms.add(new Room(
+                        rs.getInt("roomID"),
+                        rs.getInt("idHotel"),
+                        rs.getString("CustomerID"),
+                        rs.getBoolean("statusRoom"),
+                        rs.getString("facilities"),
+                        rs.getString("description_room")));
+            }
         } catch (Exception e) {
             System.err.println("Error: " + e);
         }
         return rooms;
     }
 
-    public static List<Booking> SelectBooking(String query, String Actor){
+    public static List<Booking> SelectBooking(String query, String Actor) {
         ConnectMySQl();
         List<Booking> books = new ArrayList<>();
         try {
             PreparedStatement st = conn.prepareStatement(query);
             ResultSet rs = st.executeQuery();
 
-        while(rs.next()){
-            books.add(new Booking
-        (
-            rs.getInt("BookingID"),
-            rs.getString("CustomerID"),
-            rs.getInt("roomID"),
-            rs.getString("managerID"),
-            rs.getDate("checkInDate"),
-            rs.getDate("checkOutDate"),
-            rs.getDouble("bookingPrice"),
-            rs.getBoolean("paymentStatus"),
-            false
-        ));
-        }
+            while (rs.next()) {
+                books.add(new Booking(
+                        rs.getInt("BookingID"),
+                        rs.getString("CustomerID"),
+                        rs.getInt("roomID"),
+                        rs.getString("managerID"),
+                        rs.getDate("checkInDate"),
+                        rs.getDate("checkOutDate"),
+                        rs.getDouble("bookingPrice"),
+                        rs.getBoolean("paymentStatus"),
+                        false));
+            }
         } catch (Exception e) {
             System.err.println("Error: " + e);
         }
         return books;
     }
 
-    public static void insertTable(String command){
+    public static void insertTable(String command) {
         ConnectMySQl();
         try {
-            //Luc nay can build lai qua trinh create table
+            // Luc nay can build lai qua trinh create table
             PreparedStatement ps = conn.prepareStatement(command);
             ps.execute();
             System.err.println("Insert successfully");
@@ -116,7 +112,7 @@ public class DatabaseControl {
         }
     }
 
-    public static void updateTable(String command){
+    public static void updateTable(String command) {
         ConnectMySQl();
         try {
             PreparedStatement ps = conn.prepareStatement(command);
@@ -179,5 +175,30 @@ public class DatabaseControl {
         } catch (Exception e) {
             System.err.println("Update room status error: " + e);
         }
+    }
+
+    /**
+     * Lấy CustomerID tiếp theo bằng cách query MAX(CustomerID) từ database
+     * Tránh lỗi duplicate key khi đăng ký user mới
+     */
+    public static String getNextCustomerID() {
+        ConnectMySQl();
+        try {
+            String sql = "SELECT MAX(CAST(CustomerID AS UNSIGNED)) as maxID FROM Customer";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int maxID = rs.getInt("maxID");
+                // Nếu table rỗng, bắt đầu từ 10000
+                if (rs.wasNull()) {
+                    return "10000";
+                }
+                return String.valueOf(maxID + 1);
+            }
+        } catch (Exception e) {
+            System.err.println("Get next customer ID error: " + e);
+        }
+        // Fallback: dùng timestamp để đảm bảo unique
+        return String.valueOf(System.currentTimeMillis() % 100000);
     }
 }

@@ -10,7 +10,6 @@ import Entity.User;
  * @author Wuan
  */
 public class RegisterPanel extends javax.swing.JPanel {
-    static int num = 10000;
     /**
      * Creates new form RegisterPanel
      */
@@ -130,9 +129,9 @@ public class RegisterPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
-        String numConvert = Integer.toString(num);
-        num += 1;
-        User user = new User(numConvert, Pattern_Fullname.getText(), Pattern_Email.getText(),
+        // Lấy ID tiếp theo từ database thay vì dùng static counter
+        String customerID = DatabaseControl.getNextCustomerID();
+        User user = new User(customerID, Pattern_Fullname.getText(), Pattern_Email.getText(),
             new String(Pattern_Pwd.getPassword()), Pattern_PhoneNumber.getText());
         DatabaseControl.insertTable(user.register());
         javax.swing.JOptionPane.showMessageDialog(this, "Account created successfully!");
