@@ -25,12 +25,14 @@ public class HotelBooking {
             cardPanel = new JPanel(new CardLayout());
             
             // Create all panels
+            Interface Interface = new Interface(cardPanel);
             LoginPanel loginPanel = new LoginPanel(cardPanel);
             RegisterPanel registerPanel = new RegisterPanel();
             searchRoomPanel = new SearchRoomPanel();
             bookingPanel = new BookingConfirmationPanel(cardPanel);
             
             // Add panels to CardLayout
+            cardPanel.add(Interface, "Main");
             cardPanel.add(loginPanel, "Login");
             cardPanel.add(registerPanel, "Register");
             cardPanel.add(searchRoomPanel, "SearchRoom");
@@ -40,7 +42,7 @@ public class HotelBooking {
             frame.setVisible(true);
             
             // Show login panel first
-            showPanel("Login");
+            showPanel("Interface");
         });
     }
     

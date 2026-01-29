@@ -1,8 +1,6 @@
 package Entity;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Booking {
     private int bookingID;
@@ -52,18 +50,4 @@ public class Booking {
         return this.bookingPrice * 1.1; 
     }
 
-    public boolean isUser(String userID){
-        try {
-            String sql = "SELECT * FROM Booking WHERE userID = ?";
-            List<User> users = new ArrayList<>();
-            users = DatabaseControl.SelectUsers(sql, "Customer");
-            if (users == null) {
-                return false;
-            }
-                return true;
-        }catch (Exception e) {
-            System.err.println("Error: " + e);
-            return false;
-        }
-    }
 }

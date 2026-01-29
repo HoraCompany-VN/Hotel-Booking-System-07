@@ -5,7 +5,10 @@
 package HotelBooking;
 import java.awt.CardLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Entity.User;
 /**
  *
  * @author Wuan
@@ -96,6 +99,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         Btn_Regis.setBackground(new java.awt.Color(121, 187, 248));
         Btn_Regis.setText("Register an Account");
+        Btn_Regis.addActionListener(this::Btn_RegisActionPerformed);
 
         NoTouch2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         NoTouch2.setText("Don't have an account ?");
@@ -187,6 +191,15 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void Btn_DoSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DoSignInActionPerformed
         // TODO add your handling code here:
+        String phoneNumber = Pattern_PhoneNumber.getText();
+        String password = new String(Pattern_Pwd.getPassword());
+        if (User.isUser(phoneNumber, password)) {;
+            JOptionPane.showMessageDialog(null, "Login Success");
+            CardLayout cl = (CardLayout) cardPanel.getLayout();
+            cl.show(cardPanel, "SearchRoom"); //SearchRoom has full name is SearchRoomPanel
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid phone number or password.", "Login Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
         /*
         Can kiem tra xem user co trong database ko
         Neu co thi mo cua so tim kiem cho user
@@ -195,6 +208,12 @@ public class LoginPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Login Error");
         */
     }//GEN-LAST:event_Btn_DoSignInActionPerformed
+//Can chinh lai cho nay
+    private void Btn_RegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RegisActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        cl.show(cardPanel, "Register");
+    }//GEN-LAST:event_Btn_RegisActionPerformed
 
     private void ShowPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPwdActionPerformed
         // TODO add your handling code here:
@@ -208,11 +227,11 @@ public class LoginPanel extends javax.swing.JPanel {
     private void Pattern_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pattern_PhoneNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Pattern_PhoneNumberActionPerformed
-
+//Can chinh lai cho nay
     private void BeGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeGuestActionPerformed
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) cardPanel.getLayout();
-        cl.show(cardPanel, "Main");
+        cl.show(cardPanel, "Interface");
     }//GEN-LAST:event_BeGuestActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

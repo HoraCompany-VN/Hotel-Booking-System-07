@@ -13,6 +13,7 @@ public class Interface extends JFrame {
     public int Width = 1080;
     public int Height = 1080;
     private JPanel cardPanel;
+
     public Interface(JPanel cardPanel){
         this.cardPanel = cardPanel;
         JFrame window = new JFrame("Hotel Booking System");
@@ -55,16 +56,16 @@ public class Interface extends JFrame {
         btnBookNow.setForeground(java.awt.Color.WHITE);
         btnBookNow.addActionListener(e -> {
             CardLayout cl = (CardLayout) mainPanel.getLayout();
-            cl.show(mainPanel, "BookingConfirmation");
+            cl.show(mainPanel, "Login");
         });
         homePanel.add(btnBookNow, BorderLayout.SOUTH);
         
-        // Add BookingConfirmationPanel
-        BookingConfirmationPanel bookingPanel = new BookingConfirmationPanel(mainPanel);
-        
+        // Add Login Panel
+        LoginPanel loginPanel = new LoginPanel(mainPanel);
+
         // Add panels to CardLayout
         mainPanel.add(homePanel, "Home");
-        mainPanel.add(bookingPanel, "BookingConfirmation");
+        mainPanel.add(loginPanel, "Login");
         
         window.add(mainPanel);
         window.setVisible(true);
@@ -75,10 +76,5 @@ public class Interface extends JFrame {
         Image img = icon.getImage();
         Image resizedImg = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImg);
-    }
-
-    private void switchToLogin() {
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
-        cl.show(cardPanel, "Login");
     }
 }

@@ -100,7 +100,7 @@ public class SearchRoomPanel extends JPanel {
             sql += " AND facilities LIKE '%" + facilities + "%'";
         }
 
-        List<Room> rooms = DatabaseControl.SelectRoom(sql, "Guest");
+        List<Room> rooms = DatabaseControl.SelectRoom(sql, "Room");
         for (Room r : rooms) {
             double price = 1000000 + (r.getRoomID() * 100000);
             model.addRow(new Object[]{
