@@ -50,6 +50,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         backToLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         backToLogin.setForeground(new java.awt.Color(255, 255, 255));
         backToLogin.setText("BACK TO LOGIN");
+        backToLogin.addActionListener(this::backToLoginActionPerformed);
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -140,8 +141,12 @@ public class RegisterPanel extends javax.swing.JPanel {
 
     private void Pattern_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pattern_PhoneNumberActionPerformed
         // TODO add your handling code here:
+        // Nothing to do here
     }//GEN-LAST:event_Pattern_PhoneNumberActionPerformed
 
+    private void backToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToLoginActionPerformed
+        HotelBooking.showPanel("Login");
+    }//GEN-LAST:event_backToLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createAccount;
