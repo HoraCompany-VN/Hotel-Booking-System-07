@@ -214,7 +214,6 @@ public class LoginPanel extends javax.swing.JPanel {
                 "Success", 
                 JOptionPane.INFORMATION_MESSAGE);
             
-
             HotelBooking.showPanel("SearchRoom");
         } else {
             JOptionPane.showMessageDialog(this, 
