@@ -10,7 +10,7 @@ import Entity.User;
  * @author Wuan
  */
 public class RegisterPanel extends javax.swing.JPanel {
-    static int num = 0;
+    static int num = 10000;
     /**
      * Creates new form RegisterPanel
      */
