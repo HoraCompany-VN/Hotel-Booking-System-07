@@ -83,7 +83,7 @@ public class LoginPanel extends javax.swing.JPanel {
         Title_Signin.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title_Signin.setText("Sign In");
 
-        Title_UserName.setText("User Name");
+        Title_UserName.setText("Phone Number");
 
         Title_Pwd.setText("Password");
 
