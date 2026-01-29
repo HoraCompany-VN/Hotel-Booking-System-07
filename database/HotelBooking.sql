@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS Hotel;
-use Hotel;
+
+USE Hotel;
 
 -- drop table Guest;
 -- drop table Customer;

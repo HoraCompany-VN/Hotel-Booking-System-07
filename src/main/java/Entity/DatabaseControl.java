@@ -22,7 +22,7 @@ public class DatabaseControl {
         }
 
         try {
-            conn = DriverManager.getConnection(url, "root", "Hoadaihiep123");
+            conn = DriverManager.getConnection(url, "root", "MySQLQuan123");
             System.out.println("Database connection");
         } catch (SQLException ex) {
             // handle the error
