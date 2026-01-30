@@ -103,7 +103,6 @@ public class DatabaseControl {
     public static void insertTable(String command) {
         ConnectMySQl();
         try {
-            // Luc nay can build lai qua trinh create table
             PreparedStatement ps = conn.prepareStatement(command);
             ps.execute();
             System.err.println("Insert successfully");
